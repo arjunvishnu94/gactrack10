@@ -38,7 +38,7 @@ export class TurnstileCaptchaComponent implements OnInit, AfterViewInit {
           console.log('Verification response:', res);
 
           if (res.success) {
-            this.buttonStateService.setButtonEnabled(true); // Enable button on success
+            this.buttonStateService.setButtonEnabled(true); 
             console.log(res.success)
         }
 
