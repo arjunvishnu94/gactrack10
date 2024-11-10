@@ -92,48 +92,8 @@ header nav a {
   text-align: center;
 }
 
-.track-form button {
-  padding: 10px 20px;
-  background: #001f54;
-  color: #fff;
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
 
-.track-form button i {
-  margin-right: 5px;
-}
 
-.track-form button:hover {
-  background: #003366;
-}
-
-.track-form input[type="text"] {
-  padding: 10px;
-  width: 70%;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.track-form input[type="submit"] {
-  padding: 10px 20px;
-  background: #001f54;
-  color: #fff;
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
-}
-
-.track-form input[type="submit"]:hover {
-  background: #003366;
-}
 
 .tracking-info {
   background: #eee;
@@ -488,7 +448,7 @@ mat-label {
 
   margin: 20px auto;
 
-  margin-left: 110px;
+  margin-left: 250px;
 }
 
 .tracking-info {
