@@ -27,7 +27,6 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
-   
     "@azure/msal-angular": "^2.3.3",
     "@azure/msal-browser": "^2.27.0",
     "@azure/storage-blob": "^12.11.0",
@@ -77,8 +76,8 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^12.2.0",
-    "@angular/cli": "^12.2.0",
+    "@angular-devkit/build-angular": "^12.2.13",
+    "@angular/cli": "^12.2.18",
     "@angular/compiler-cli": "~12.2.0",
     "@azure/static-web-apps-cli": "^2.0.1",
     "@types/file-saver": "^2.0.5",
