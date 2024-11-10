@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<body>
+  <header>
+
+    <div class="container">
+      <div class="branding">
+        <img src="assets\GAClogo.png" alt="GAC Logo">
+        Gulf Agency Company Bahrain
+      </div>
+      <nav>
+      </nav>
+    </div>
+  </header>
+
+
+
+  <section id="showcase">
+    <div class="container">
+      <h1 style="color: rgb(255, 255, 255);font-weight: 600; 
+            margin-top: 200px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Real-Time
+        Shipment Tracking</h1>
+      <p style="color: rgb(255, 255, 255);">Track your shipments with ease and get real-time updates on their status.
+      </p>
+    </div>
+  </section>
+
+  <section id="main" class="container">
+
+    <form [formGroup]="productForm">
+
+      <h1 class="shipment-header">Track Your Shipment</h1>
+
+      <div class="track-form">
+
+
+
+        <mat-form-field appearance="outline" class="tracking-input" floatLabel="never">
+          <mat-label>Enter Tracking Number</mat-label>
+          <input formControlName="trackingnumber" matInput placeholder="GAXXXXXXXXXXXXXH">
+        </mat-form-field>
+
+
+        <app-turnstile-captcha></app-turnstile-captcha>
+
+
+        <button mat-raised-button color="primary" class="search-button" (click)="search()"  [disabled]="!isButtonEnabled" >
+          Search
+        </button>
+
+
+
+
+
+
+      </div>
+
+
+
+
+      <div class="major" *ngIf="popup2">
+        <div class="tracking-info">
+          <h2 class="shipment-title"><u>Shipment Details</u></h2>
+
+          <div class="form-grid">
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">Customer Name</mat-label>
+              <input formControlName="customername" matInput placeholder="" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">Billing Party</mat-label>
+              <input formControlName="billingparty" matInput placeholder="" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">Ref No:</mat-label>
+              <input formControlName="jobnumber" matInput placeholder="" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">PIC</mat-label>
+              <input formControlName="jobopenedby" matInput placeholder="" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">ETA</mat-label>
+              <input formControlName="eta" matInput placeholder="" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">ETD</mat-label>
+              <input formControlName="etd" matInput placeholder="" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">ATA</mat-label>
+              <input formControlName="ata" matInput placeholder="" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">ATD</mat-label>
+              <input formControlName="atd" matInput placeholder="" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">MBL/MAWB</mat-label>
+              <input formControlName="mbl" matInput placeholder="" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">HBL/HAWB</mat-label>
+              <input formControlName="hbl" matInput placeholder="" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">POL</mat-label>
+              <input formControlName="origin" matInput placeholder="" readonly>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="form-field">
+              <mat-label class="custom-label">POD</mat-label>
+              <input formControlName="destination" matInput placeholder="" readonly>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <h2 class="toggle-section">
+          <button mat-button (click)="close()">
+            <mat-icon>keyboard_arrow_up</mat-icon>
+          </button>
+          Tracking Details
+          <button mat-button (click)="open()" style="margin-left: 5px;">
+            <mat-icon>keyboard_arrow_down</mat-icon>
+          </button>
+        </h2>
+      </div>
+
+    </form>
+
+
+    <div class="timeline" *ngIf="popup3">
+
+
+
+
+
+
+      <div *ngFor="let category of getGroupedData() | keyvalue" class="timeline-category">
+        <h2 class="category-title">{{ category.key }}</h2>
+        <div *ngFor="let ts of category.value" class="timeline-item">
+          <div class="timeline-content">
+            <div class="icon" [ngClass]="{'blink': ts.isMaxDate}">
+              <span class="circle" *ngIf="!ts.isMaxDate">&#10003;</span>
+
+              <span class="circle" *ngIf="ts.isMaxDate">&#10003;</span>
+            </div>
+            <div class="event-details">
+              <p class="event-description">{{ ts.events }}</p>
+              <p class="event-date">{{ ts.createddate | date: 'dd-MM-yyyy' }}</p>
+              <p class="event-remarks">{{ ts.remarks }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+  </section>
+  <footer id="contact" style="margin-top: 120px; height: 100px;">
+    <div class="container">
+      <div class="footer-left">
+        <h3 style="margin-top: 10px;">GAC Shipment Tracker</h3>
+
+      </div>
+      <div class="footer-right">
+        <div class="social">
+          <a style="margin-top: -60px; color: white;" href="">Contact us:
+            itsupport.bahrain&#64;gac.com</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
+
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
+  <p style="color: white">Please Wait.</p>
+</ngx-spinner>

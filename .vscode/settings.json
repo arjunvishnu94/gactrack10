@@ -1,0 +1,8 @@
+// {
+//     "appService.defaultWebAppToDeploy": "/subscriptions/fd67eae4-7dae-4025-b9ea-57cfc6e377cd/resourceGroups/iodeu-bah-rgp/providers/Microsoft.Web/sites/iodeu-bah-apw01/slots/gaclogins",
+//     "appService.deploySubpath": "client/dist",
+//     "appService.zipIgnorePattern": [
+//         "node_modules{,/**}",
+//         ".vscode{,/**}"
+//     ]
+// }

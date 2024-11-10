@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+/* html { background-color: rgb(135,206,235);} */
+
+
+
+  
+ 
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+
+
+
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+@import '~ngx-toastr/toastr';   
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* @import '~@fullcalendar/core/main.css';
+@import '~@fullcalendar/daygrid/main.css';
+@import '~@fullcalendar/timegrid/main.css';  */
+
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+
+.timepicker-overlay {
+z-index: 10000000 !important;
+}
+
+.timepicker-backdrop-overlay {
+z-index: 10000000 !important;
+}
+
+
+
+
