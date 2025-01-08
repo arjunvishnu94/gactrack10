@@ -49,7 +49,7 @@
         <app-turnstile-captcha></app-turnstile-captcha>
 
 
-        <button mat-raised-button color="primary" class="search-button" (click)="search()"  [disabled]="!isButtonEnabled" >
+        <button mat-raised-button color="primary" style ="background-color: #00447b;"class="search-button" (click)="search()"  [disabled]="!isButtonEnabled" >
           Search
         </button>
 
@@ -60,74 +60,19 @@
 
       </div>
 
-
-
-
       <div class="major" *ngIf="popup2">
         <div class="tracking-info">
           <h2 class="shipment-title"><u>Shipment Details</u></h2>
-
-          <div class="form-grid">
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">Customer Name</mat-label>
-              <input formControlName="customername" matInput placeholder="" readonly>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">Billing Party</mat-label>
-              <input formControlName="billingparty" matInput placeholder="" readonly>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">Ref No:</mat-label>
-              <input formControlName="jobnumber" matInput placeholder="" readonly>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">PIC</mat-label>
-              <input formControlName="jobopenedby" matInput placeholder="" readonly>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">ETA</mat-label>
-              <input formControlName="eta" matInput placeholder="" readonly>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">ETD</mat-label>
-              <input formControlName="etd" matInput placeholder="" readonly>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">ATA</mat-label>
-              <input formControlName="ata" matInput placeholder="" readonly>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">ATD</mat-label>
-              <input formControlName="atd" matInput placeholder="" readonly>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">MBL/MAWB</mat-label>
-              <input formControlName="mbl" matInput placeholder="" readonly>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">HBL/HAWB</mat-label>
-              <input formControlName="hbl" matInput placeholder="" readonly>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">POL</mat-label>
-              <input formControlName="origin" matInput placeholder="" readonly>
-            </mat-form-field>
-
-            <mat-form-field appearance="outline" class="form-field">
-              <mat-label class="custom-label">POD</mat-label>
-              <input formControlName="destination" matInput placeholder="" readonly>
-            </mat-form-field>
-          </div>
+          <p><strong>Tracking Number:</strong> {{shipmentDetails.trackingnumber}} </p>
+          <p><strong>Origin:</strong> {{shipmentDetails.origin}} </p>
+          <p><strong>Destination:</strong> {{shipmentDetails.destination}} </p>
+          <p><strong>ETD:</strong> {{shipmentDetails.etd}} </p>
+          <p><strong>ETA:</strong> {{shipmentDetails.eta}} </p>
+          <p><strong>MBL:</strong> {{shipmentDetails.mbl}} </p>
+          <p><strong>HBL:</strong> {{shipmentDetails.hbl}} </p>
+          <p><strong>ATD:</strong> {{shipmentDetails.atd}} </p>
+          <p><strong>ATA:</strong> {{shipmentDetails.ata}} </p>
+         
         </div>
 
         <h2 class="toggle-section">
@@ -140,7 +85,6 @@
           </button>
         </h2>
       </div>
-
     </form>
 
 
@@ -152,13 +96,13 @@
 
 
       <div *ngFor="let category of getGroupedData() | keyvalue" class="timeline-category">
-        <h2 class="category-title">{{ category.key }}</h2>
+        <h2 class="category-title">{{ category.key | slice:3}}</h2>
         <div *ngFor="let ts of category.value" class="timeline-item">
           <div class="timeline-content">
             <div class="icon" [ngClass]="{'blink': ts.isMaxDate}">
               <span class="circle" *ngIf="!ts.isMaxDate">&#10003;</span>
 
-              <span class="circle" *ngIf="ts.isMaxDate">&#10003;</span>
+              <span class="circle1" *ngIf="ts.isMaxDate">&#10003;</span>
             </div>
             <div class="event-details">
               <p class="event-description">{{ ts.events }}</p>

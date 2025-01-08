@@ -13,7 +13,7 @@ body {
 }
 
 header {
-  background: #0c3479;
+  background: #00447b;
   color: #fff;
   padding: 20px 0;
 }
@@ -125,7 +125,7 @@ header nav a {
 }
 
 footer {
-  background: #0c3479;
+  background: #00447b;
   color: #fff;
   padding: 20px 0;
   text-align: center;
@@ -309,8 +309,8 @@ body {
 
 .category-title {
   font-size: 1.5em;
-  color: #4caf50;
-  border-bottom: 2px solid #4caf50;
+  color: #00447b;
+  border-bottom: 2px solid #00447b;
   padding-bottom: 10px;
   margin-bottom: 20px;
 }
@@ -318,12 +318,13 @@ body {
 .timeline-item {
   margin: 15px 0;
   padding: 15px;
-  border-left: 4px solid #4caf50;
+  border-left: 4px solid #00447b;
   position: relative;
   background-color: #f1f1f1;
   border-radius: 5px;
   transition: transform 0.2s;
 }
+
 
 .timeline-item:hover {
   transform: scale(1.02);
@@ -394,7 +395,7 @@ mat-form-field {
 
 mat-label {
   font-size: 14px;
-  color: rgb(7, 84, 184);
+  color: #00447b;
 }
 
 .mat-input-element {
@@ -404,7 +405,7 @@ mat-label {
 }
 
 .mat-form-field:hover .mat-form-field-outline {
-  border-color: rgb(7, 84, 184);
+  border-color: #00447b;
 }
 
 .mat-form-field-underline {
@@ -413,7 +414,7 @@ mat-label {
 
 
 .mat-form-field:focus-within .mat-form-field-outline {
-  border-color: rgb(7, 84, 184);
+  border-color: #00447b;
 }
 
 
@@ -423,7 +424,7 @@ mat-label {
 
 
 .mat-form-field .mat-input-placeholder.mat-focused {
-  color: rgb(7, 84, 184);
+  color: #00447b;
 }
 
 
@@ -431,7 +432,7 @@ mat-label {
   font-weight: 650;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-size: 2.5em;
-  color: rgb(7, 84, 184);
+  color: #00447b;
   text-align: center;
   margin: 20px 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
@@ -458,7 +459,7 @@ mat-label {
 
 .shipment-title {
   text-align: center;
-  color: rgb(7, 84, 184);
+  color: #00447b;
   font-size: 2em;
 
   margin-bottom: 20px;
@@ -487,13 +488,13 @@ mat-label {
 
 
 button.mat-button {
-  color: rgb(7, 84, 184);
+  color: #00447b;
 }
 
 
 
 .mat-form-field:hover .mat-form-field-outline {
-  border-color: rgb(7, 84, 184);
+  border-color: #00447b;
 
 }
 
@@ -525,12 +526,12 @@ button.mat-button {
 }
 
 .green-tick .circle {
-  background-color: green;
+  background-color: yellow;
 }
 
 .blink .circle {
 
-  box-shadow: 0 0 20px rgba(0, 0, 255, 1);
+  box-shadow: 0 0 20px yellow;
 
 }
 
@@ -549,6 +550,23 @@ button.mat-button {
   line-height: 30px;
   font-size: 1.2em;
 }
+
+
+.circle1 {
+
+
+
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background-color: #00447b;
+  border-radius: 50%;
+  color: #00447b;
+  text-align: center;
+  line-height: 30px;
+  font-size: 1.2em;
+}
+
 
 
 .icon {

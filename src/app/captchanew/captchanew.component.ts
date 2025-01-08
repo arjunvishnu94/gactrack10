@@ -4,19 +4,9 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-
 import { MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ButtonStateService } from 'src/button-state.service';
-
-
-
-
-
-
-
-
-
 
 
 
@@ -49,6 +39,7 @@ export class CaptchanewComponent implements OnInit {
   abc1: any[];
 
   totalAngularPackages: any;
+  shipmentDetails:any = {};
 
 
 
@@ -57,43 +48,31 @@ export class CaptchanewComponent implements OnInit {
 
 
   getGroupedData() {
-
     if (!Array.isArray(this.abc1)) {
- 
       return {}; 
-  }
-
-
+    }
     const groupedData = this.groupByCategory(this.abc1);
-
     const maxDateItem = this.findMaxDateItem(this.abc1);
-
-
-
-
     Object.keys(groupedData).forEach(category => {
       groupedData[category].forEach(ts => {
         ts.isMaxDate = ts.createddate === maxDateItem.createddate;
-
       });
     });
-
+    console.log(groupedData)
     return groupedData;
-
+    
   }
 
-
-
   private findMaxDateItem(items: any[]) {
+    if (items.length === 0) {
+      return null;  
+    }
     return items.reduce((max, ts) =>
       new Date(ts.createddate) > new Date(max.createddate) ? ts : max
     );
   }
 
-
-
   private groupByCategory(data: any[]) {
-
     if (!Array.isArray(data)) {
       console.error('Data is not an array:', data);
       return {}; 
@@ -106,26 +85,20 @@ export class CaptchanewComponent implements OnInit {
     }, {});
   }
 
-
-
-
-
-  constructor(public formBuilder: FormBuilder, private builder: FormBuilder,
+  constructor(public formBuilder: FormBuilder, private builder: FormBuilder, 
     private datepipe: DatePipe,
-    private http: HttpClient, private dialog: MatDialog, private SpinnerService: NgxSpinnerService,private buttonStateService: ButtonStateService) { }
+    private http: HttpClient, private dialog: MatDialog, private SpinnerService: NgxSpinnerService,
+  private buttonStateService: ButtonStateService) { }
+    
+    
   ngOnInit(): void {
-
     this.buttonStateService.buttonEnabled$.subscribe(enabled => {
       this.isButtonEnabled = enabled;
-  });
-
+    });
 
   }
 
-
-
   productForm = this.formBuilder.group({
-
     trackingnumber: ['', Validators.required],
     customername: [''],
     origin: [''],
@@ -148,16 +121,8 @@ export class CaptchanewComponent implements OnInit {
     createddate2: [''],
     events3: [''],
     createddate3: [''],
-
-
-
     details1: this.builder.array([]),
-
-
-
   })
-
-
 
 
   get invproducts1() {
@@ -186,12 +151,6 @@ export class CaptchanewComponent implements OnInit {
 
   close4() { this.popup7 = false }
 
-
-
-
-
-
-
   search() {
 
 
@@ -202,14 +161,16 @@ export class CaptchanewComponent implements OnInit {
       next: (res) => {
 
 
+      
+
+        if(res!= null) {
+
         this.popup2 = true
         this.popup3 = true
         this.popup4 = true
         this.popup5 = true
         this.popup6 = true
         this.popup7 = true
-
-
 
         this.productForm.controls['jobnumber'].setValue(res.jobnumber);
         this.productForm.controls['customername'].setValue(res.customer);
@@ -218,16 +179,44 @@ export class CaptchanewComponent implements OnInit {
         this.productForm.controls['origin'].setValue(res.pol);
         this.productForm.controls['destination'].setValue(res.pod);
         this.productForm.controls['hblnumber'].setValue(res.hbl);
-        this.productForm.controls['eta'].setValue(this.datepipe.transform(res.eta), 'dd-MM-yyyy');
-        this.productForm.controls['etd'].setValue(this.datepipe.transform(res.etd), 'dd-MM-yyyy');
+     
         this.productForm.controls['hbl'].setValue(res.hbl);
         this.productForm.controls['mbl'].setValue(res.mbl);
-        this.productForm.controls['ata'].setValue(this.datepipe.transform(res.ata), 'dd-MM-yyyy');
-        this.productForm.controls['atd'].setValue(this.datepipe.transform(res.atd), 'dd-MM-yyyy');
-
-
+       
         this.jobevents1()
 
+        const formattedEta = this.datepipe.transform(res.eta, 'MMMM dd, yyyy')
+        const formattedEtd = this.datepipe.transform(res.etd, 'MMMM dd, yyyy')
+        const formattedAta = this.datepipe.transform(res.ata, 'MMMM dd, yyyy')
+        const formattedAtd = this.datepipe.transform(res.atd, 'MMMM dd, yyyy')
+
+
+        this.shipmentDetails = {
+          trackingnumber :this.productForm.getRawValue().trackingnumber,
+          origin:res.pol,
+          destination:res.pod,
+          customername:res.customer,
+          billingparty:res.billingparty,
+          etd:formattedEtd,
+          eta:formattedEta,
+          hbl:res.hbl,
+          mbl:res.mbl,
+          ata:formattedAta,
+          atd:formattedAtd
+        }
+       
+      }
+
+
+        else
+        
+        {
+
+          this.SpinnerService.hide();
+
+    
+
+        }
 
       },
 
