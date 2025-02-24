@@ -19,7 +19,7 @@ export class CaptchanewComponent implements OnInit {
   [x: string]: any;
   title = 'trackinggaclogins';
 
-
+  popup1 = true
   popup2 = false
   popup3 = false
   popup4 = false
@@ -57,6 +57,7 @@ export class CaptchanewComponent implements OnInit {
       groupedData[category].forEach(ts => {
         ts.isMaxDate = ts.createddate === maxDateItem.createddate;
       });
+      
     });
     console.log(groupedData)
     return groupedData;
@@ -81,8 +82,15 @@ export class CaptchanewComponent implements OnInit {
 
     return data.reduce((acc, ts) => {
       (acc[ts.category] = acc[ts.category] || []).push(ts);
+
+      console.log(acc)
+      
       return acc;
-    }, {});
+
+      
+    }, 
+   
+    {});
   }
 
   constructor(public formBuilder: FormBuilder, private builder: FormBuilder, 
@@ -151,6 +159,25 @@ export class CaptchanewComponent implements OnInit {
 
   close4() { this.popup7 = false }
 
+
+  track(){
+
+    this.popup1 = true
+    this.popup2 = false
+    this.popup3 = false
+    this.popup4 = false
+    this.popup5 = false
+    this.popup6 = false
+    this.popup7 = false
+
+    this.buttonStateService.buttonEnabled$.subscribe(enabled => {
+      this.isButtonEnabled = enabled;
+    });
+
+    location.reload();
+
+  }
+
   search() {
 
 
@@ -160,7 +187,7 @@ export class CaptchanewComponent implements OnInit {
     this.http.get<any>('https://api20220705123849.azurewebsites.net/api/jobs/gactrack/' + this.productForm.getRawValue().trackingnumber).subscribe({
       next: (res) => {
 
-
+console.log(res)
       
 
         if(res!= null) {
@@ -171,6 +198,8 @@ export class CaptchanewComponent implements OnInit {
         this.popup5 = true
         this.popup6 = true
         this.popup7 = true
+
+        this.popup1 = false
 
         this.productForm.controls['jobnumber'].setValue(res.jobnumber);
         this.productForm.controls['customername'].setValue(res.customer);
@@ -251,6 +280,8 @@ export class CaptchanewComponent implements OnInit {
     this.http.get<any>('https://api20220705123849.azurewebsites.net/api/jobevent/getjobeventsjointracking/' + this.productForm.getRawValue().jobnumber).subscribe({
       next: (res1) => {
 
+
+        console.log(res1)
 
         this.abc1 = res1.filter(u => u.trackerevent == 'Y').sort((a, b) => new Date(a.createddate).getTime() - new Date(b.createddate).getTime());
         this.SpinnerService.hide();

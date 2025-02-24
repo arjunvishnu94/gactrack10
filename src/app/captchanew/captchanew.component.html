@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+
 
 
 
@@ -9,10 +8,13 @@
   <header>
 
     <div class="container">
-      <div class="branding">
+      <div class="branding" style="color: rgb(255, 255, 255); font-size: larger;">
         <img src="assets\GAClogo.png" alt="GAC Logo">
         Gulf Agency Company Bahrain
       </div>
+      <a style="margin-top: -10px;margin-left: 44%; color: rgb(255, 255, 255); " href="https://www.gac.com/bahrain">About us |</a>
+      <a style="margin-top: -10px;margin-left: 5px; color: rgb(255, 255, 255);" href="https://www.gac.com/bahrain/logistics/freight-services">Freight Services |</a>
+      <a style="margin-top: -10px;margin-left: 5px; color: rgb(255, 255, 255);" href="https://www.gac.com/bahrain/logistics/international-moving">Int Moving</a>
       <nav>
       </nav>
     </div>
@@ -23,70 +25,80 @@
   <section id="showcase">
     <div class="container">
       <h1 style="color: rgb(255, 255, 255);font-weight: 600; 
-            margin-top: 200px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Real-Time
-        Shipment Tracking</h1>
+            margin-top: 0px;font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Real-Time Shipment Tracking</h1>
       <p style="color: rgb(255, 255, 255);">Track your shipments with ease and get real-time updates on their status.
       </p>
     </div>
   </section>
 
-  <section id="main" class="container">
 
-    <form [formGroup]="productForm">
+ 
+<section id="main" class="container">
 
-      <h1 class="shipment-header">Track Your Shipment</h1>
+  <button mat-raised-button class="search-button" style="margin-left: 260px;" (click)="track()"  *ngIf="popup2"> <img
+    src="assets\homebutton.png" style="height: 25px;width: 25px;"></button>
 
-      <div class="track-form">
+  <form [formGroup]="productForm">
+    <div class="track-form"  *ngIf="popup1">
+      <!-- <h3 class="shipment-header">Track Your Shipment</h3> -->
+      <mat-form-field appearance="outline" style="width: 60%;">
+        <mat-label>Enter Tracking Number</mat-label>
+        <input formControlName="trackingnumber" matInput placeholder="GAXXXXXXXXXXXXXH">
+      </mat-form-field>
+      
+      <button mat-raised-button class="search-button" (click)="search()" [disabled]="!isButtonEnabled"> Search </button>
 
+      <app-turnstile-captcha style="margin-left: -205px;"></app-turnstile-captcha>
 
+      <footer id="contact" style="margin-top: 324px;height: 100px;width: 407%;margin-left: -800px;">
 
-        <mat-form-field appearance="outline" class="tracking-input" floatLabel="never">
-          <mat-label>Enter Tracking Number</mat-label>
-          <input formControlName="trackingnumber" matInput placeholder="GAXXXXXXXXXXXXXH">
-        </mat-form-field>
-
-
-        <app-turnstile-captcha></app-turnstile-captcha>
-
-
-        <button mat-raised-button color="primary" style ="background-color: #00447b;"class="search-button" (click)="search()"  [disabled]="!isButtonEnabled" >
-          Search
-        </button>
-
-
-
-
-
-
-      </div>
-
-      <div class="major" *ngIf="popup2">
-        <div class="tracking-info">
-          <h2 class="shipment-title"><u>Shipment Details</u></h2>
-          <p><strong>Tracking Number:</strong> {{shipmentDetails.trackingnumber}} </p>
-          <p><strong>Origin:</strong> {{shipmentDetails.origin}} </p>
-          <p><strong>Destination:</strong> {{shipmentDetails.destination}} </p>
-          <p><strong>ETD:</strong> {{shipmentDetails.etd}} </p>
-          <p><strong>ETA:</strong> {{shipmentDetails.eta}} </p>
-          <p><strong>MBL:</strong> {{shipmentDetails.mbl}} </p>
-          <p><strong>HBL:</strong> {{shipmentDetails.hbl}} </p>
-          <p><strong>ATD:</strong> {{shipmentDetails.atd}} </p>
-          <p><strong>ATA:</strong> {{shipmentDetails.ata}} </p>
-         
+        <div class="container">
+     
+          <div class="footer-left">
+            <h3 style="margin-top: 10px;">GAC Shipment Tracker</h3>
+    
+          </div>
+     
         </div>
+      </footer>
+      
 
-      <!-- </div> -->
+    </div>
 
-        <h2 class="toggle-section">
-          <button mat-button (click)="close()">
-            <mat-icon>keyboard_arrow_up</mat-icon>
-          </button>
-          Tracking Details
-          <button mat-button (click)="open()" style="margin-left: 5px;">
-            <mat-icon>keyboard_arrow_down</mat-icon>
-          </button>
-        </h2>
+    
+
+    <div class="major small-box" *ngIf="popup2" >
+
+    
+
+      <div class="tracking-info">
+        <h2 class="shipment-title">Shipment Details</h2>
+        
+        <div class="shipment-row">
+          <p><strong>Tracking Number:</strong> <span class="value">{{shipmentDetails.trackingnumber}}</span></p>
+          <p><strong>Origin :</strong> <span class="value">{{shipmentDetails.origin}}</span></p>
+          <p><strong>Destination:</strong> <span class="value">{{shipmentDetails.destination}}</span></p>
+          <p><strong>ETD:</strong> <span class="value">{{shipmentDetails.etd}}</span></p>
+          <p><strong>ETA:</strong> <span class="value">{{shipmentDetails.eta}}</span></p>
+          <p><strong>MBL:</strong> <span class="value">{{shipmentDetails.mbl}}</span></p>
+          <p><strong>HBL:</strong> <span class="value">{{shipmentDetails.hbl}}</span></p>
+          <p><strong>ATD:</strong> <span class="value">{{shipmentDetails.atd}}</span></p>
+          <p><strong>ATA:</strong> <span class="value">{{shipmentDetails.ata}}</span></p>
       </div>
+      </div>
+      
+    
+      <h2 class="toggle-section">
+        <button mat-button (click)="close()">
+          <mat-icon>keyboard_arrow_up</mat-icon>
+        </button>
+        Tracking Details
+        <button mat-button (click)="open()" style="margin-left: 5px;">
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+      </h2>
+    </div>
+    
     </form>
 
 
@@ -107,14 +119,37 @@
               <span class="circle1" *ngIf="ts.isMaxDate">&#10003;</span>
             </div>
             <div class="event-details">
-              <p class="event-description">{{ ts.events }}</p>
-              <p class="event-date">{{ ts.createddate | date: 'dd-MM-yyyy' }}</p>
+              <div class="event-info">
+                <p class="event-description">{{ ts.events }}</p>
+                <p class="event-date">{{ ts.createddate | date: 'dd-MM-yyyy HH:mm:ss' }}</p>
+              </div>
               <p class="event-remarks">{{ ts.remarks }}</p>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- <footer id="contact" style="height: 100px; width: 141%; margin-left: -405px;"> -->
+
+  
+
+<!-- 
+        <div class="container">
+    
+     
+          <div class="footer-left">
+            <h3 style="margin-top: 10px;">GAC Shipment Tracker</h3>
+    
+          </div>
+          <div class="footer-right">
+            <div class="social">
+              <a style="color: rgb(255, 255, 255);" href="mailto:pricing.bahrain@gac.com?subject=Enquiry&body=Hello,%0A%0AI would like to know more about your services."
+              ><mat-icon>mouse</mat-icon>Email Enquiry</a>
+             
+            </div>
+          </div>
+        </div> -->
+      <!-- </footer> -->
 
 
     </div>
@@ -126,23 +161,14 @@
 
 
   </section>
-  <footer id="contact" style="margin-top: 120px; height: 100px;">
-    <div class="container">
-      <div class="footer-left">
-        <h3 style="margin-top: 10px;">GAC Shipment Tracker</h3>
 
-      </div>
-      <div class="footer-right">
-        <div class="social">
-          <a style="margin-top: -60px; color: white;" href="">Contact us:
-            itsupport.bahrain&#64;gac.com</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <div class="brand">
+   
+
+  </div>
+
 </body>
 
-</html>
 
 
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">
