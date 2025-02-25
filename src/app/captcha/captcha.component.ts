@@ -94,7 +94,7 @@ save(){
       this.data =  JSON.stringify(result)
 
 
-      console.log(this.data)
+      //console.log(this.data)
   
        this.data = "success"
 

@@ -57,9 +57,12 @@ export class CaptchanewComponent implements OnInit {
       groupedData[category].forEach(ts => {
         ts.isMaxDate = ts.createddate === maxDateItem.createddate;
       });
+
+
+      groupedData[category].sort((a, b) => new Date(b.createddate).getTime() - new Date(a.createddate).getTime());
       
     });
-    console.log(groupedData)
+    //console.log(groupedData)
     return groupedData;
     
   }
@@ -83,7 +86,7 @@ export class CaptchanewComponent implements OnInit {
     return data.reduce((acc, ts) => {
       (acc[ts.category] = acc[ts.category] || []).push(ts);
 
-      console.log(acc)
+     // console.log(acc)
       
       return acc;
 
@@ -187,7 +190,7 @@ export class CaptchanewComponent implements OnInit {
     this.http.get<any>('https://api20220705123849.azurewebsites.net/api/jobs/gactrack/' + this.productForm.getRawValue().trackingnumber).subscribe({
       next: (res) => {
 
-console.log(res)
+//console.log(res)
       
 
         if(res!= null) {
@@ -281,7 +284,7 @@ console.log(res)
       next: (res1) => {
 
 
-        console.log(res1)
+        //console.log(res1)
 
         this.abc1 = res1.filter(u => u.trackerevent == 'Y').sort((a, b) => new Date(a.createddate).getTime() - new Date(b.createddate).getTime());
         this.SpinnerService.hide();
