@@ -187,7 +187,7 @@ export class CaptchanewComponent implements OnInit {
     this.SpinnerService.show();
 
 
-    this.http.get<any>('https://api20220705123849.azurewebsites.net/api/jobs/gactrack/' + this.productForm.getRawValue().trackingnumber).subscribe({
+    this.http.get<any>('https://iopeu-bah-apw02.azurewebsites.net/api/jobs/gactrack/' + this.productForm.getRawValue().trackingnumber).subscribe({
       next: (res) => {
 
 //console.log(res)
@@ -280,7 +280,7 @@ export class CaptchanewComponent implements OnInit {
   jobevents1() {
 
 
-    this.http.get<any>('https://api20220705123849.azurewebsites.net/api/jobevent/getjobeventsjointracking/' + this.productForm.getRawValue().jobnumber).subscribe({
+    this.http.get<any>('https://iopeu-bah-apw02.azurewebsites.net/api/jobevent/getjobeventsjointracking/' + this.productForm.getRawValue().jobnumber).subscribe({
       next: (res1) => {
 
 

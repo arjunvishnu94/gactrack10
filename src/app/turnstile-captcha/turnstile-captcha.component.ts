@@ -33,7 +33,7 @@ export class TurnstileCaptchaComponent implements OnInit, AfterViewInit {
 
       const body = {};
 
-      this.http.post<any>('https://api20220705123849.azurewebsites.net/api/captchapost/' + token, body, { headers }).subscribe({
+      this.http.post<any>('https://iopeu-bah-apw02.azurewebsites.net/api/captchapost/' + token, body, { headers }).subscribe({
         next: (res) => {
          // console.log('Verification response:', res);
 
