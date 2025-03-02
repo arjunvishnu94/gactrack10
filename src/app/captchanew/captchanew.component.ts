@@ -187,7 +187,7 @@ export class CaptchanewComponent implements OnInit {
     this.SpinnerService.show();
 
 
-    this.http.get<any>('https://iopeu-bah-apw02.azurewebsites.net/api/jobs/gactrack/' + this.productForm.getRawValue().trackingnumber).subscribe({
+    this.http.get<any>('https://iopeu-bah-apw02.azurewebsites.net/api/jobs/track/' + this.productForm.getRawValue().trackingnumber).subscribe({
       next: (res) => {
 
 //console.log(res)
