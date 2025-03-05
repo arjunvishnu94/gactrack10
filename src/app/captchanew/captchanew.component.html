@@ -40,7 +40,7 @@
 
   <form [formGroup]="productForm">
     <div class="track-form"  *ngIf="popup1">
-      <!-- <h3 class="shipment-header">Track Your Shipment</h3> -->
+   
       <mat-form-field appearance="outline" style="width: 60%;">
         <mat-label>Enter Tracking Number</mat-label>
         <input formControlName="trackingnumber" matInput placeholder="GAXXXXXXXXXXXXXH">
@@ -50,17 +50,7 @@
 
       <app-turnstile-captcha style="margin-left: -205px;"></app-turnstile-captcha>
 
-      <!-- <footer id="contact" style="margin-top: 324px;height: 100px;width: 407%;margin-left: -800px;">
-
-        <div class="container">
-     
-          <div class="footer-left">
-            <h3 style="margin-top: 10px;">GAC Shipment Tracker</h3>
-    
-          </div>
-     
-        </div>
-      </footer> -->
+   
       
 
     </div>
@@ -121,7 +111,9 @@
             <div class="event-details">
               <div class="event-info">
                 <p class="event-description">{{ ts.events }}</p>
-                <p class="event-date">{{ ts.createddate | date: 'dd-MM-yyyy HH:mm:ss' }}</p>
+              <p class="event-date">{{ ts.createddate | date: 'dd-MM-yyyy HH:mm:ss' }}</p> 
+              
+                
               </div>
               <p class="event-remarks">{{ ts.remarks }}</p>
             </div>
@@ -129,27 +121,7 @@
         </div>
       </div>
 
-      <!-- <footer id="contact" style="height: 100px; width: 141%; margin-left: -405px;"> -->
-
-  
-
-<!-- 
-        <div class="container">
     
-     
-          <div class="footer-left">
-            <h3 style="margin-top: 10px;">GAC Shipment Tracker</h3>
-    
-          </div>
-          <div class="footer-right">
-            <div class="social">
-              <a style="color: rgb(255, 255, 255);" href="mailto:pricing.bahrain@gac.com?subject=Enquiry&body=Hello,%0A%0AI would like to know more about your services."
-              ><mat-icon>mouse</mat-icon>Email Enquiry</a>
-             
-            </div>
-          </div>
-        </div> -->
-      <!-- </footer> -->
 
 
     </div>

@@ -255,7 +255,7 @@ export class CaptchanewComponent implements OnInit {
       error: (error) => {
 
         this.SpinnerService.hide();
-//
+
 
       },
 
@@ -276,7 +276,6 @@ export class CaptchanewComponent implements OnInit {
 
 
 
-
   jobevents1() {
 
 
@@ -284,7 +283,9 @@ export class CaptchanewComponent implements OnInit {
       next: (res1) => {
 
 
-        //console.log(res1)
+          res1.forEach(u => {
+          u.createddate = new Date(new Date(u.createddate).getTime() + 3 * 60 * 60 * 1000);
+        });
 
         this.abc1 = res1.filter(u => u.trackerevent == 'Y').sort((a, b) => new Date(a.createddate).getTime() - new Date(b.createddate).getTime());
         this.SpinnerService.hide();
