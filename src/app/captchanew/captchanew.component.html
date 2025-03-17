@@ -35,7 +35,7 @@
  
 <section id="main" class="container">
 
-  <button mat-raised-button class="search-button" style="margin-left: 260px;" (click)="track()"  *ngIf="popup2"> <img
+  <button mat-raised-button class="search-button" style="margin-left: 380px;" (click)="track()"  *ngIf="popup2"> <img
     src="assets\homebutton.png" style="height: 25px;width: 25px;"></button>
 
   <form [formGroup]="productForm">
@@ -57,7 +57,7 @@
 
     
 
-    <div class="major small-box" *ngIf="popup2" >
+    <div class="major small-box" style="margin-left: -12%;" *ngIf="popup2" >
 
     
 
@@ -71,6 +71,8 @@
           <p><strong>ETD:</strong> <span class="value">{{shipmentDetails.etd}}</span></p>
           <p><strong>ETA:</strong> <span class="value">{{shipmentDetails.eta}}</span></p>
           <p><strong>MBL:</strong> <span class="value">{{shipmentDetails.mbl}}</span></p>
+          <p><strong>No.of packages:</strong> <span class="value">{{shipmentDetails.packages}}</span></p>
+          <p><strong>weight:</strong> <span class="value">{{shipmentDetails.weight}}</span></p>
           <p><strong>HBL:</strong> <span class="value">{{shipmentDetails.hbl}}</span></p>
           <p><strong>ATD:</strong> <span class="value">{{shipmentDetails.atd}}</span></p>
           <p><strong>ATA:</strong> <span class="value">{{shipmentDetails.ata}}</span></p>

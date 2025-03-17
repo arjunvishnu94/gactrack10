@@ -132,6 +132,8 @@ export class CaptchanewComponent implements OnInit {
     createddate2: [''],
     events3: [''],
     createddate3: [''],
+    weight: [''],
+    packages: [''],
     details1: this.builder.array([]),
   })
 
@@ -214,6 +216,9 @@ export class CaptchanewComponent implements OnInit {
      
         this.productForm.controls['hbl'].setValue(res.hbl);
         this.productForm.controls['mbl'].setValue(res.mbl);
+           
+        this.productForm.controls['weight'].setValue(res.weight);
+        this.productForm.controls['packages'].setValue(res.packages);
        
         this.jobevents1()
 
@@ -234,7 +239,9 @@ export class CaptchanewComponent implements OnInit {
           hbl:res.hbl,
           mbl:res.mbl,
           ata:formattedAta,
-          atd:formattedAtd
+          atd:formattedAtd,
+          weight: res.weight,
+          packages: res.packages
         }
        
       }
