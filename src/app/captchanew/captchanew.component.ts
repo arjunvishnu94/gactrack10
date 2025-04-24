@@ -120,6 +120,7 @@ export class CaptchanewComponent implements OnInit {
     ata: [],
     atd: [],
     jobnumber: [''],
+    sprnumber: [''],
     hbl: [''],
     mbl: [''],
     events: [''],
@@ -219,6 +220,7 @@ export class CaptchanewComponent implements OnInit {
            
         this.productForm.controls['weight'].setValue(res.weight);
         this.productForm.controls['packages'].setValue(res.packages);
+        this.productForm.controls['sprnumber'].setValue(res.sprnumber);
        
         this.jobevents1()
 
