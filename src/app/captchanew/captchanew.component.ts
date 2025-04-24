@@ -243,7 +243,8 @@ export class CaptchanewComponent implements OnInit {
           ata:formattedAta,
           atd:formattedAtd,
           weight: res.weight,
-          packages: res.packages
+          packages: res.packages,
+          sprnumber:res.sprnumber
         }
        
       }
