@@ -3,7 +3,7 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ButtonStateService } from 'src/button-state.service';
@@ -190,7 +190,15 @@ export class CaptchanewComponent implements OnInit {
     this.SpinnerService.show();
 
 
-    this.http.get<any>('https://iopeu-bah-apw02.azurewebsites.net/api/jobs/track/' + this.productForm.getRawValue().trackingnumber).subscribe({
+    const headers = new HttpHeaders({
+  'x-api-key': '6CBxzdYcEgNDrRhMbDpkBF7e4d4Kib46dwL9ZE5egiL0iL5Y3dzREUBSUYVUwUkN'
+});
+
+
+    this.http.get<any>('https://iopeu-bah-apw02.azurewebsites.net/api/jobs/track/' + this.productForm.getRawValue().trackingnumber,
+   {headers}
+  
+  ).subscribe({
       next: (res) => {
 
 //console.log(res)
@@ -289,7 +297,15 @@ export class CaptchanewComponent implements OnInit {
   jobevents1() {
 
 
-    this.http.get<any>('https://iopeu-bah-apw02.azurewebsites.net/api/jobevent/getjobeventsjointracking/' + this.productForm.getRawValue().jobnumber).subscribe({
+       const headers = new HttpHeaders({
+  'x-api-key': '6CBxzdYcEgNDrRhMbDpkBF7e4d4Kib46dwL9ZE5egiL0iL5Y3dzREUBSUYVUwUkN'
+});
+
+
+    this.http.get<any>('https://iopeu-bah-apw02.azurewebsites.net/api/jobevent/getjobeventsjointracking/' + this.productForm.getRawValue().jobnumber,
+     {headers}
+  
+  ).subscribe({
       next: (res1) => {
 
 
